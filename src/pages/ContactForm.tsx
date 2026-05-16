@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 
 const ContactForm = () => {
   const [name, setName] = useState('');
@@ -7,23 +6,13 @@ const ContactForm = () => {
   const [message, setMessage] = useState('');
   const [sent, setSent] = useState(false);
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    try {
-      const response = await axios.post('http://localhost:8000/contact', {
-        name,
-        email,
-        message
-      });
-      if (response.status === 200) {
-        setSent(true);
-        setName('');
-        setEmail('');
-        setMessage('');
-      }
-    } catch (error) {
-      console.error(error);
-    }
+    console.log(name, email, message);
+    setSent(true);
+    setName('');
+    setEmail('');
+    setMessage('');
   };
 
   return (
@@ -51,5 +40,4 @@ const ContactForm = () => {
     </div>
   );
 };
-
 export default ContactForm;
