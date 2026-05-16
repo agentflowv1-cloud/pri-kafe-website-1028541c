@@ -1,28 +1,18 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import ContactForm from './pages/ContactForm';
-
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import axios from 'axios';
+import { useQuery } from '@tanstack/react-query';
+import Promotions from './pages/Promotions';
+import './App.css';
 function App() {
   return (
-    <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/contact">Contact</Link>
-            </li>
-          </ul>
-        </nav>
+    <div className="app">
+      <BrowserRouter>
         <Routes>
-          <Route path="/" element={<div>Welcome to our website!</div>} />
-          <Route path="/contact" element={<ContactForm />} />
+          <Route path="/" element={<Promotions />} />
         </Routes>
-      </div>
-    </Router>
+      </BrowserRouter>
+    </div>
   );
 }
-
 export default App;
